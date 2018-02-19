@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>{{ p.title }}</title>
+    <meta name="description" content="{{ p.title }}">
+    <meta name="author" content="Oussama ahmed">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+
+    <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'blog/js/modernizr.js' %}"></script>
+    <script src="{% static 'blog/js/pace.min.js' %}"></script>
+
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'blog/myLogo.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'blog/myLogo.png' %}" type="image/x-icon">
+
+</head>
+
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+            
+        <div class="header-logo">
+            <a class="site-logo" href="/"><img width="60%" height="60%" src="{% static 'blog/myLogo.png' %}" alt="Homepage"></a>
+        </div>
+
+        <nav class="header-nav-wrap">
+            <ul class="header-nav">
+                <li><a href="/#home" title="home">Home</a></li>
+                <li><a href="/#about" title="about">About</a></li>
+                <li class="current"><a href="/#works" title="works">Works</a></li>
+                <li><a href="" title="blog">Blog</a></li>
+                <li><a href="/#contact" title="contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <a class="header-menu-toggle" href="#"><span>Menu</span></a>
+
+    </header> <!-- end s-header -->
+
+ <div class="row blog-content">
+
+            <div class ="col-three ">
+                <h1 class="article" >Description</h1>
+                    <p class="article">
+                        {{ p.description }}.
+                        <br>
+                        <a href="{{ p.githubLink }}">Github link<i class="im im-github" aria-hidden="true"> </i> </a>
+                    </p>
+            </div>
+
+
+             <div class="col-nine">
+                <h1 class="article">Watch the demo here! </h1>
+                 <div class="video-container">
+                      <iframe width="420" height="315"
+                        src="{{ p.video }}?autoplay=1" >
+                      </iframe>
+                 </div>
+             </div>
+
+ </div>
+
+
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+            <div class="row">
+                <div class="col-full">
+    
+                    <div class="footer-logo">
+                        <a   class="footer-site-logo" href="#0"><img src="{% static 'blog/myLogo.png'%}" alt="Homepage">Oussama<br>AHMED<br>.info</a>
+                    </div>
+    
+                    <ul class="footer-social">
+                        <li><a href="#0">
+                            <i class="im im-facebook" aria-hidden="true"></i>
+                            <span>Facebook</span>
+                        </a></li>
+                        <li><a href="#0">
+                            <i class="im im-linkedin" aria-hidden="true"></i>
+                            <span>LinkedIn</span>
+                        </a></li>
+                        <li><a href="#0">
+                            <i class="im im-github" aria-hidden="true"></i>
+                            <span>Github</span>
+                        </a></li>
+                    </ul>
+                        
+                </div>
+            </div>
+    
+            <div class="row footer-bottom">
+    
+                <div class="col-twelve">
+                    <div class="copyright">
+                        <span>© Copyright Oussama AHMED 2018.</span>
+                    </div>
+    
+                    <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="im im-arrow-up-circle" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+    
+            </div> <!-- end footer-bottom -->
+    
+        </footer> <!-- end footer -->
+    
+    
+        <div id="preloader"> 
+            <div id="loader"></div>
+        </div>
+    
+    
+        <!-- Java Script
+        ================================================== -->
+    <script src="{% static 'blog/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'blog/js/plugins.js' %}"></script>
+    <script src="{% static 'blog/js/main.js' %}"></script>
+
+</body>
+
+</html>
