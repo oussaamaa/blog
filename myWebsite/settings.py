@@ -18,8 +18,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-MEDIA_ROOT = os.path.join(BASE_DIR, './media/')
-STATIC_ROOT = os.path.join(BASE_DIR, './static/')
+#MEDIA_ROOT = os.path.join(BASE_DIR, './media/')
+#STATIC_ROOT = os.path.join(BASE_DIR, './static/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/var/www/personalwebsite/media/')
+STATIC_ROOT = os.path.join(BASE_DIR, '/var/www/personalwebsite/static/')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'tdzcmyy!#r5%(lj8f#29qe0-@0vkijpr%-i_fs7%4$e!g)m7l('
 
