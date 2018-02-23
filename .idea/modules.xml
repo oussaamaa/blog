@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///run/media/oussaamaa/8A9814B49814A0AD/Users/Oussema/Desktop/Django/allsafe/.idea/allsafe.iml" filepath="/run/media/oussaamaa/8A9814B49814A0AD/Users/Oussema/Desktop/Django/allsafe/.idea/allsafe.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/myWebsite.iml" filepath="$PROJECT_DIR$/.idea/myWebsite.iml" />
     </modules>
   </component>

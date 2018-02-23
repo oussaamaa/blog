@@ -61,3 +61,7 @@ class article(models.Model):
         return self.titre
 
 
+
+
+
+

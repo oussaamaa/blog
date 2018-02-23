@@ -23,8 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('Project/<slug:slug>',views.watchProject,name='watchproject'),
-    path('Article/<slug:slug>',views.watchArticle,name='watchproject'),
+    path('Article/<slug:slug>',views.watchArticle,name='watchArticule'),
     #path('email/', views.emailView, name='email'),
     path('success/', views.successView, name='success'),
+
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
