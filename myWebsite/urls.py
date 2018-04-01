@@ -26,6 +26,7 @@ urlpatterns = [
     path('Article/<slug:slug>',views.watchArticle,name='watchArticule'),
     #path('email/', views.emailView, name='email'),
     path('success/', views.successView, name='success'),
+    path('json/', views.readFromJson)
 
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
