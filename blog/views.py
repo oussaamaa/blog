@@ -1,9 +1,12 @@
 import firebase_admin
-
+import json
+from django.http import StreamingHttpResponse
 from django.shortcuts import render, get_object_or_404,redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import skill,work,project,education,article
+from django.views.decorators.csrf import csrf_exempt
+
+from .models import skill,work,project,education,article,product
 from .forms import ContactForm
 from firebase_admin import credentials
 from firebase_admin import db
@@ -32,7 +35,8 @@ def home(request):
             message = form.cleaned_data['message']+"\nSent from :"+from_email
             try:
                 send_mail(subject, message, 'admin@oussamaahmed.info', ['oussama-ah@hotmail.fr'], fail_silently=False)
-                send_mail('Please do not reply', 'Your mail is sent successfully.\nI will contact you very soon.\n Oussama AHMED.', 'admin@oussamaahmed.info', [from_email], fail_silently=False)
+                send_mail('Please do not reply', 'Your mail is sent successfully.\nI will contact you very soon.\n Oussama AHMED.',
+                          'admin@oussamaahmed.info', [from_email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('success')
@@ -47,7 +51,7 @@ def redirectToProject(request):
 def watchProject(request,slug):
    Project = get_object_or_404(project, slug=slug)
    if(slug=='network-project'):
-       data=ReadFromFirebase()
+       data=product.objects.all
        return render(request,'blog/NetworkProject.html',locals())
    return render(request, 'blog/poject-single.html', {'p': Project})
 
@@ -83,4 +87,15 @@ def ReadFromFirebase():
     root=db.reference('Production/Product/productID')
     #print(root.get())
     return root.get()
+
+@csrf_exempt
+def readFromJson(request):
+    if request.method=='POST':
+            received_json_data = json.loads(request.body)
+            if received_json_data['auth']=='12345':
+              p=product(titre=received_json_data['titre'],creationDate=received_json_data['time'])
+              p.save()
+              return StreamingHttpResponse('it was post request: '+str(received_json_data))
+            return StreamingHttpResponse('Authentification Error!')
+    return StreamingHttpResponse('it was GET request')
 

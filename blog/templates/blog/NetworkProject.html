@@ -71,8 +71,12 @@
                     <p class="article">
                         {{ Project.description }}.
                         <br>
+<<<<<<< HEAD
                         <a href="{{ Project.githubLink }}">Github link<i class="im 
 im-github" aria-hidden="true"> </i> </a>
+=======
+                        <a href="{{ Project.githubLink }}">Github link<i class="im im-github" aria-hidden="true"> </i> </a>
+>>>>>>> 918068cd0c8910da72f264de32840b45dbb0c8b3
                     </p>
             </div>
 
@@ -80,7 +84,20 @@ im-github" aria-hidden="true"> </i> </a>
 
              <div class="col-nine">
                 <h1 class="article">Watch the demo here! </h1>
-                   <p class="article"> Data from the cloud <br>{{ data }}</p>
+
+                   <p class="article"> Data from the cloud: {{ data.count }} items created! <br><br>
+
+                    {% for p in data %}
+
+                        Product name: {{ p.titre }}
+                        Creation Date:  {{ p.creationDate }}
+                        <br>
+
+                    {% endfor %}
+
+
+
+                   </p>
 
              </div>
  </div>
