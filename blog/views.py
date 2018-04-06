@@ -10,7 +10,7 @@ from firebase_admin import db
 from django.core.mail import EmailMessage
 
 # Create your views here.
-cred = credentials.Certificate('/home/oussaamaa/Desktop/oussaamaa/myWebsite/blog/static/blog/key.json')
+cred = credentials.Certificate('/home/oussama/key.json')
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://reseau-c2687.firebaseio.com'
 })
