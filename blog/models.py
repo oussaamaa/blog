@@ -65,6 +65,7 @@ class article(models.Model):
 class product(models.Model):
     titre=models.CharField(max_length=50,null=False)
     creationDate=models.CharField(max_length=50,null=False)
+    quantity=models.IntegerField(default=0)
 
     def __str__(self):
         return self.titre

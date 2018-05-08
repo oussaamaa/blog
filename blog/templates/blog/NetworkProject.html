@@ -30,7 +30,9 @@
     ================================================== -->
     <script src="{% static 'blog/js/modernizr.js' %}"></script>
     <script src="{% static 'blog/js/pace.min.js' %}"></script>
-
+    {% load static %}
+    <script type="text/javascript" src="{% static "blog/js/fusioncharts.js" %}"></script>
+    <script type="text/javascript" src="{% static "blog/js/fusioncharts.theme.fint.js" %}"></script>
 
     <!-- favicons
     ================================================== -->
@@ -52,7 +54,7 @@
 
         <nav class="header-nav-wrap">
             <ul class="header-nav">
-                <li><a href="/home" title="home">Home</a></li>
+                <li><a href="/" title="home">Home</a></li>
                 <li><a href="/about" title="about">About</a></li>
                 <li class="current"><a href="/works" title="works">Works</a></li>
                 <li><a href="" title="blog">Blog</a></li>
@@ -71,12 +73,8 @@
                     <p class="article">
                         {{ Project.description }}.
                         <br>
-<<<<<<< HEAD
-                        <a href="{{ Project.githubLink }}">Github link<i class="im 
-im-github" aria-hidden="true"> </i> </a>
-=======
                         <a href="{{ Project.githubLink }}">Github link<i class="im im-github" aria-hidden="true"> </i> </a>
->>>>>>> 918068cd0c8910da72f264de32840b45dbb0c8b3
+
                     </p>
             </div>
 
@@ -98,7 +96,7 @@ im-github" aria-hidden="true"> </i> </a>
 
 
                    </p>
-
+                <div id="chart-1">{{ output|safe }}</div>
              </div>
  </div>
 

@@ -5,18 +5,20 @@ from django.shortcuts import render, get_object_or_404,redirect
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
-
+from .fusioncharts import FusionCharts
 from .models import skill,work,project,education,article,product
 from .forms import ContactForm
 from firebase_admin import credentials
 from firebase_admin import db
 from django.core.mail import EmailMessage
+from django.core import serializers
+
 
 # Create your views here.
-cred = credentials.Certificate('/home/oussama/key.json')
-firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://reseau-c2687.firebaseio.com'
-})
+# cred = credentials.Certificate('/home/oussama/key.json')
+# firebase_admin.initialize_app(cred, {
+#     'databaseURL': 'https://reseau-c2687.firebaseio.com'
+# })
 
 
 def home(request):
@@ -52,7 +54,38 @@ def watchProject(request,slug):
    Project = get_object_or_404(project, slug=slug)
    if(slug=='network-project'):
        data=product.objects.all
-       return render(request,'blog/NetworkProject.html',locals())
+
+       #product1=product(id=1,titre="product 1",creationDate="Fri Apr 06 2018 17:20:02 GMT+0100 (CET)",quantity=5422220)
+       #product2=product(id=2,titre="product 1",creationDate="Fri Apr 06 2018 17:20:02 GMT+0100 (CET)",quantity=5422220)
+       product1=product.objects.get(id=1)
+       product2=product.objects.get(id=2)
+       print(product1.quantity)
+       print(product2.quantity)
+
+       # Create an object for the column2d chart using the FusionCharts class constructor
+       column2d = FusionCharts("column2d", "ex1", "600", "500", "chart-1", "json",
+                               # The data is passed as a string in the `dataSource` as parameter.
+                               """{  
+                                      "chart": {  
+                                         "caption":"Productivity",
+                                         "subCaption":"Number of products produced this week",
+                                         "numberPrefix":"",
+                                         "theme":"ocean"
+                                      },
+                                      "data": [  
+                                           {"label":"Product number 1", "value":"""+str(product1.quantity)+"""},
+                                           {"label":"Product number 2", "value":"""+str(product2.quantity)+"""},
+                                           {"label":"Product number 3", "value":"922"},
+                                           {"label":"Product number 4", "value":"520"},
+                                          
+                                       ]
+                                   }""")
+
+       # returning complete JavaScript and HTML code,
+       # which is used to generate chart in the browsers.
+       return render(request, 'blog/NetworkProject.html', {'output': column2d.render()})
+
+       #return render(request,'blog/NetworkProject.html',locals())
    return render(request, 'blog/poject-single.html', {'p': Project})
 
 def successView(request):
@@ -91,9 +124,10 @@ def ReadFromFirebase():
 @csrf_exempt
 def readFromJson(request):
     if request.method=='POST':
+            print("post request ")
             received_json_data = json.loads(request.body)
             if received_json_data['auth']=='12345':
-              p=product(titre=received_json_data['titre'],creationDate=received_json_data['time'])
+              p=product(id=received_json_data['id'],titre=received_json_data['titre'],creationDate=received_json_data['time'],quantity=received_json_data['quantity'])
               p.save()
               return StreamingHttpResponse('it was post request: '+str(received_json_data))
             return StreamingHttpResponse('Authentification Error!')
