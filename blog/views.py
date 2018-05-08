@@ -83,7 +83,7 @@ def watchProject(request,slug):
 
        # returning complete JavaScript and HTML code,
        # which is used to generate chart in the browsers.
-       return render(request, 'blog/NetworkProject.html', {'output': column2d.render(),'p': Project})
+       return render(request, 'blog/NetworkProject.html', {'output': column2d.render(),'p': Project,'data':data})
 
        #return render(request,'blog/NetworkProject.html',locals())
    return render(request, 'blog/poject-single.html', {'p': Project})
