@@ -53,14 +53,14 @@ def redirectToProject(request):
 def watchProject(request,slug):
    Project = get_object_or_404(project, slug=slug)
    if(slug=='network-project'):
-       data=product.objects.all
+       data=product.objects.all()
 
        #product1=product(id=1,titre="product 1",creationDate="Fri Apr 06 2018 17:20:02 GMT+0100 (CET)",quantity=5422220)
        #product2=product(id=2,titre="product 1",creationDate="Fri Apr 06 2018 17:20:02 GMT+0100 (CET)",quantity=5422220)
        product1=product.objects.get(id=1)
        product2=product.objects.get(id=2)
-       print(product1.quantity)
-       print(product2.quantity)
+       #print(product1.quantity)
+       #print(product2.quantity)
 
        # Create an object for the column2d chart using the FusionCharts class constructor
        column2d = FusionCharts("column2d", "ex1", "600", "500", "chart-1", "json",
@@ -75,15 +75,15 @@ def watchProject(request,slug):
                                       "data": [  
                                            {"label":"Product number 1", "value":"""+str(product1.quantity)+"""},
                                            {"label":"Product number 2", "value":"""+str(product2.quantity)+"""},
-                                           {"label":"Product number 3", "value":"922"},
-                                           {"label":"Product number 4", "value":"520"},
+                                           {"label":"Product number 3", "value":"2"},
+                                           {"label":"Product number 4", "value":"8"},
                                           
                                        ]
                                    }""")
 
        # returning complete JavaScript and HTML code,
        # which is used to generate chart in the browsers.
-       return render(request, 'blog/NetworkProject.html', {'output': column2d.render(),'p': Project,'data':data})
+       return render(request, 'blog/NetworkProject.html', {'output': column2d.render(), 'p': Project, 'data': data})
 
        #return render(request,'blog/NetworkProject.html',locals())
    return render(request, 'blog/poject-single.html', {'p': Project})
