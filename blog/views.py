@@ -37,7 +37,7 @@ def home(request):
             message = form.cleaned_data['message']+"\nSent from :"+from_email
             try:
                 send_mail(subject, message, 'admin@oussamaahmed.info', ['oussama-ah@hotmail.fr'], fail_silently=False)
-                send_mail('Please do not reply', 'Your mail is sent successfully.\nI will contact you very soon.\n Oussama AHMED.',
+                send_mail('Please do not reply', 'Your mail was sent successfully.\nI will contact you very soon.\n Oussama AHMED.',
                           'admin@oussamaahmed.info', [from_email], fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
