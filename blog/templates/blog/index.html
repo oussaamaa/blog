@@ -78,18 +78,18 @@
                 <h3>Hello There</h3>
 
                 <h1>
-                    I am Oussama Ahmed. <br>
-                    An applied computer <br>
-                    science student.
+                    I am Oussama Ahmed, <br>
+                    an applied computer <br>
+                    science engineering student.
                 </h1>
 
                 <div class="home-content__buttons">
                     <a href="#works" class="smoothscroll btn btn--stroke">
                         Latest Projects
                     </a>
-                    <a href="#about" class="smoothscroll btn btn--stroke">
-                        More About Me
-                    </a>
+{#                    <a href="#about" class="smoothscroll btn btn--stroke">#}
+{#                        More About Me#}
+{#                    </a>#}
                 </div>
 
                 <div class="home-content__scroll">
@@ -125,8 +125,8 @@
         
         <div class="row narrow section-intro has-bottom-sep">
             <div class="col-full text-center">
-                <h3>About</h3>
-                <h1>More About Me</h1>
+                <h3>About me</h3>
+{#                <h1>More About Me</h1>#}
                 <p class="lead">Currently, I am a student at National School of Engineers of Sousse(ENISo)<br>
                 And  the mobile division manager at Orange Tech Club (OTCE) and i am a member of Allsafe cybersecurity Club.</p>
 
@@ -190,7 +190,71 @@
                 </div> <!-- end timeline -->
             </div> <!-- end left/ right-->
             {% endfor %}
-        </div>
+        </div> <!-- end left/ right-->
+        <div class="row about-content about-content--timeline">
+
+            <div class="col-full text-center">
+                <h3>My achievments.</h3>
+            </div>
+
+            <div class="col-six tab-full {% cycle 'left' 'right' %}">
+                <div class="timeline">
+
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <p class="timeline__timeframe"> 21 June 2018</p>
+                            <h3>Software development fundamentals </h3>
+                            <h5>{{ ed.formation }}</h5>
+                        </div>
+                        <div class="timeline__desc">
+                            <p>{{ ed.descriptionFormation }}.</p>
+                        </div>
+                    </div> <!-- end timeline__block -->
+
+
+                </div> <!-- end timeline -->
+            </div> <!-- end left/ right-->
+
+            <div class="col-six tab-full {% cycle 'left' 'right' %}">
+                <div class="timeline">
+
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <p class="timeline__timeframe"> 4 July 2017</p>
+                            <h3>degree in French language studies </h3>
+                            <h5>B2</h5>
+                        </div>
+                        <div class="timeline__desc">
+                            <p></p>
+                        </div>
+                    </div> <!-- end timeline__block -->
+
+
+                </div> <!-- end timeline -->
+            </div> <!-- end left/ right-->
+
+            <div class="col-six tab-full {% cycle 'left' 'right' %}">
+                <div class="timeline">
+
+                    <div class="timeline__block">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__header">
+                            <p class="timeline__timeframe"> 21 May 2018</p>
+                            <h3>Eniso IoT challenge </h3>
+                            <h5>First prize.</h5>
+                        </div>
+                        <div class="timeline__desc">
+                            <p></p>
+                        </div>
+                    </div> <!-- end timeline__block -->
+
+
+                </div> <!-- end timeline -->
+            </div> <!-- end left/ right-->
+
+        </div> <!-- end left/ right-->
     <div class="row about-content about-content--timeline">
 
             <div class="col-full text-center">
@@ -217,8 +281,9 @@
             </div> <!-- end left/ right-->
             {% endfor %}
         </div>
-    </section> <!-- end about -->
-    
+    </section>
+    <!-- end about -->
+
 
     <!-- works
     ================================================== -->
@@ -264,49 +329,50 @@
 
     </section> <!-- end works -->
 
+
     <!-- blog
     ================================================== -->
-    <section id="blog" class="s-blog target-section">
-
-        <div class="row narrow section-intro has-bottom-sep">
-            <div class="col-full">
-                <h3>Journal</h3>
-                <h1>Latest From The Blog.</h1>
-                <p class="lead"></p>
-            </div>
-        </div>
-
-        <div class="row blog-content">
-            <div class="col-full">
-
-                <div class="blog-list block-1-2 block-tab-full">
-                    {% for a in articles %}
-                    <article class="col-block">
-                                
-                        <div class="blog-date">
-                            <a href="/Article/{{ a.slug }}">{{ a.datePublication }}</a>
-                        </div>  
-                        
-                        <h2 class="h01"><a href="/Article/{{ a.slug }}">{{ a.titre }}</a></h2>
-                        <p>
-                        {{ a.contenu }}
-                        </p>
-
-                        <div class="blog-cat">
-                                <a href="{{ a.source }}">Source</a>
-                        </div>
-
-                        
-                    </article>
-                    {% endfor %}
-
-                </div> <!-- end blog-list -->
-
-            </div> <!-- end col-full -->
-        </div> <!-- end blog-content -->
-
-    </section> <!-- end s-blog -->
-
+{#    <section id="blog" class="s-blog target-section">#}
+{##}
+{#        <div class="row narrow section-intro has-bottom-sep">#}
+{#            <div class="col-full">#}
+{#                <h3>Journal</h3>#}
+{#                <h1>Latest From The Blog.</h1>#}
+{#                <p class="lead"></p>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        <div class="row blog-content">#}
+{#            <div class="col-full">#}
+{##}
+{#                <div class="blog-list block-1-2 block-tab-full">#}
+{#                    {% for a in articles %}#}
+{#                    <article class="col-block">#}
+{#                                #}
+{#                        <div class="blog-date">#}
+{#                            <a href="/Article/{{ a.slug }}">{{ a.datePublication }}</a>#}
+{#                        </div>  #}
+{#                        #}
+{#                        <h2 class="h01"><a href="/Article/{{ a.slug }}">{{ a.titre }}</a></h2>#}
+{#                        <p>#}
+{#                        {{ a.contenu }}#}
+{#                        </p>#}
+{##}
+{#                        <div class="blog-cat">#}
+{#                                <a href="{{ a.source }}">Source</a>#}
+{#                        </div>#}
+{##}
+{#                        #}
+{#                    </article>#}
+{#                    {% endfor %}#}
+{##}
+{#                </div> <!-- end blog-list -->#}
+{##}
+{#            </div> <!-- end col-full -->#}
+{#        </div> <!-- end blog-content -->#}
+{##}
+{#    </section> <!-- end s-blog -->#}
+{##}
 
 
 
